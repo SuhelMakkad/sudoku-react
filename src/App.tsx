@@ -15,6 +15,13 @@ function App() {
     return !isLastCell && showBorder ? className : "";
   };
 
+  const updateMatrix = (rowIndex: number, colIndex: number, value: string): void => {
+    const newMatrix = [...matrix];
+    newMatrix[rowIndex][colIndex] = +value.slice(-1);
+
+    setMatrix(newMatrix);
+  };
+
   return (
     <div className="wrapper">
       <h1 className="heading">Sudoku</h1>
@@ -29,7 +36,12 @@ function App() {
               )}`}
               key={colIndex}
             >
-              <input value={col} className={`input `} type="number" />
+              <input
+                value={col ? col : ""}
+                onChange={(e) => updateMatrix(rowIndex, colIndex, e.target.value)}
+                className="input"
+                type="number"
+              />
             </li>
           ))
         )}

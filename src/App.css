@@ -34,6 +34,7 @@
   text-align: center;
 
   border: 1px solid rgba(255, 255, 255, 0.2);
+  caret-color: transparent;
 }
 
 .input::-webkit-inner-spin-button,
