@@ -1,5 +1,5 @@
 import { useState } from "react";
-import solve from "./utils/solveSudoku";
+import solve from "./utils/sudoku";
 
 import "./App.css";
 
