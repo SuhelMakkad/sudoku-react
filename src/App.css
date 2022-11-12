@@ -52,3 +52,17 @@
 .border-bottom {
   border-bottom: 1px solid rgba(255, 255, 255, 0.75);
 }
+
+.action-btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.solve-btn {
+  background: rgb(241, 111, 111);
+}
+
+.reset-btn {
+  background: rgb(83, 83, 83);
+}

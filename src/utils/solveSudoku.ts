@@ -24,7 +24,8 @@ const checkIfPossible = (matrix: number[][], x: number, y: number, n: number): b
   return true;
 };
 
-function solve(matrix: number[][]): number[][] | false {
+function solve(matrixToSolve: number[][]): number[][] | false {
+  const matrix = [...matrixToSolve];
   for (let y = 0; y < 9; y++) {
     for (let x = 0; x < 9; x++) {
       if (matrix[y][x] === 0) {

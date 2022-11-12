@@ -1,8 +1,10 @@
 import { useState } from "react";
+import solve from "./utils/solveSudoku";
 
 import "./App.css";
 
 function App() {
+  const [error, setError] = useState("");
   const [matrix, setMatrix] = useState<number[][]>(
     Array(9)
       .fill(0)
@@ -22,9 +24,30 @@ function App() {
     setMatrix(newMatrix);
   };
 
+  const handleReset = () => {
+    setMatrix(
+      Array(9)
+        .fill(0)
+        .map((_) => Array(9).fill(0))
+    );
+  };
+
+  const handleSolveClick = () => {
+    const solvedMatrix = solve(matrix);
+    console.log(solvedMatrix);
+    if (!solvedMatrix) {
+      setError("Incorrect Input");
+      console.log("ERROR");
+      return;
+    }
+
+    setMatrix(solvedMatrix);
+    console.log("DONE");
+  };
+
   return (
     <div className="wrapper">
-      <h1 className="heading">Sudoku</h1>
+      <h1 className="heading">Sudoku Solver</h1>
 
       <ul className="grid">
         {matrix.map((row, rowIndex) =>
@@ -46,6 +69,16 @@ function App() {
           ))
         )}
       </ul>
+
+      <div className="action-btns">
+        <button onClick={handleSolveClick} className="solve-btn">
+          Solve
+        </button>
+
+        <button onClick={handleReset} className="reset-btn">
+          Reset
+        </button>
+      </div>
     </div>
   );
 }
